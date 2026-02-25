@@ -9,7 +9,7 @@ const App = () => {
   const [Notes,setNotes]= useState([])
   const [Editid,setEditid]=useState(null)
   function fetchNotes(){
-    axios.get("http://localhost:3000/api/notes")
+    axios.get("https://notes-creator.onrender.com/api/notes")
   .then((res)=>{
     const {notes}=res.data
     setNotes(notes)
@@ -18,7 +18,7 @@ const App = () => {
   function submithandler(e){
     e.preventDefault()
     if(Editid){
-      axios.patch("http://localhost:3000/api/notes/"+Editid,{
+      axios.patch("https://notes-creator.onrender.com/api/notes/"+Editid,{
         description:Description
       })
       .then((res)=>{
@@ -29,7 +29,7 @@ const App = () => {
     })
     }
     else{
-      axios.post("http://localhost:3000/api/notes",{
+      axios.post("https://notes-creator.onrender.com/api/notes",{
       title:Title,
       description:Description
     })
@@ -42,7 +42,7 @@ const App = () => {
     setDescription("")
   }
   function deletefn(id){
-    axios.delete("http://localhost:3000/api/notes/"+id)
+    axios.delete("https://notes-creator.onrender.com/api/notes/"+id)
     .then((res)=>{
       console.log(res.data)
       fetchNotes()
